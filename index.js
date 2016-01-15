@@ -39,7 +39,7 @@ exports = module.exports = function(options){
   options = options || {};
 
   return function multipart(req, res, next) {
-    if (req._body) return next();
+    if (req._body && !options.overrideCheck) return next();
     req.body = req.body || {};
     req.files = req.files || {};
 
